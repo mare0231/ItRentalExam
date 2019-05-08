@@ -33,6 +33,7 @@
     </table>
     <br />
     <br />
+    <p>@Model.Message</p>
     <h2>Opret nyt IT-udstyr</h2>
     <div class="form">
         <form asp-page="Equipments">
@@ -41,7 +42,7 @@
             <label asp-for="Equipment.Category"></label>
             <input asp-for="Equipment.Category" />
             <label asp-for="Equipment.Units"></label>
-            <input asp-for="Equipment.Units" />
+            <input asp-for="Equipment.Units" value="1" />
             <button type="submit">Opret</button>
         </form>
     </div>

@@ -15,6 +15,7 @@ namespace ItRental.Web.Pages
         [BindProperty]
         public Equipment Equipment { get; set; }
         public List<Equipment> Equipments { get; set; } = new List<Equipment>();
+        public string Message { get; set; }
 
         public EquipmentsModel()
         {
@@ -28,7 +29,7 @@ namespace ItRental.Web.Pages
         public void OnPost()
         {
             EquipmentRepository equipmentRepository = new EquipmentRepository();
-            equipmentRepository.InsertEquipment(Equipment);
+            Message = equipmentRepository.InsertEquipment(Equipment);
             Equipments = equipmentRepository.GetEquipments();
         }
     }

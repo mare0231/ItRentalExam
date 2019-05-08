@@ -43,8 +43,13 @@ namespace ItRental.Dal
             return equipments;
         }
 
-        public void InsertEquipment(Equipment equipment)
+        public string InsertEquipment(Equipment equipment)
         {
+            bool isValid = IsValid(equipment, out string message);
+            if (!isValid)
+            {
+                return message;
+            }
             string sql = $"SELECT * FROM Equipments WHERE Name = '{equipment.Name}' AND Category = '{equipment.Category}'";
             List<Equipment> equipments = HandleData(ExecuteQuery(sql));
             if (equipments.Count > 0)
@@ -55,6 +60,18 @@ namespace ItRental.Dal
             {
                 ExecuteNonQuery($"INSERT INTO Equipments VALUES ('{equipment.Name}', '{equipment.Category}', {equipment.Units})");
             }
+            return message;
+        }
+
+        private bool IsValid(Equipment equipment, out string message)
+        {
+            if (string.IsNullOrWhiteSpace(equipment.Name) || string.IsNullOrWhiteSpace(equipment.Category))
+            {
+                message = "Alle felter skal udfyldes";
+                return false;
+            }
+            message = $"{equipment.Units} {equipment.Name} er tilføjet";
+            return true;
         }
     }
 }

@@ -38,7 +38,7 @@ namespace ItRental.Dal
 
         public List<Renter> GetRentersByName(string name)
         {
-            string sql = $"SELECT * from Renters WHERE Name = {name}";
+            string sql = $"SELECT * FROM Renters WHERE Name = '{name}'";
             return HandleData(ExecuteQuery(sql));
         }
 

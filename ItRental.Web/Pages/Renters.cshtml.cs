@@ -15,12 +15,11 @@ namespace ItRental.Web.Pages
         public Renter Renter { get; set; }
         public List<Renter> Renters { get; set; } = new List<Renter>();
         public List<Renter> RenterLevels { get; set; }
+        public string SearchName { get; set; }
         public string Message { get; set; }
 
         public RentersModel()
         {
-            RenterRepository renterRepository = new RenterRepository();
-            Renters = renterRepository.GetRenters();
             List<RenterLevel> RenterLevelList = new List<RenterLevel>() { RenterLevel.Starter, RenterLevel.Normal, RenterLevel.TopRenter };
             RenterLevels = new List<Renter>();
             foreach (RenterLevel renterLevel in RenterLevelList)
@@ -31,7 +30,8 @@ namespace ItRental.Web.Pages
 
         public void OnGet()
         {
-
+            RenterRepository renterRepository = new RenterRepository();
+            Renters = renterRepository.GetRenters();
         }
 
         public void OnPost()
@@ -39,6 +39,12 @@ namespace ItRental.Web.Pages
             RenterRepository renterRepository = new RenterRepository();
             Message = renterRepository.InsertRenter(Renter);
             Renters = renterRepository.GetRenters();
+        }
+
+        public void OnPostSearch()
+        {
+            RenterRepository renterRepository = new RenterRepository();
+            Renters = renterRepository.GetRentersByName(SearchName);
         }
     }
 }

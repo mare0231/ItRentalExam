@@ -45,7 +45,16 @@ namespace ItRental.Dal
 
         public void InsertEquipment(Equipment equipment)
         {
-            ExecuteNonQuery($"INSERT INTO Equipments VALUES ('{equipment.Name}', '{equipment.Category}', '{equipment.Units}')");
+            string sql = $"SELECT * FROM Equipments WHERE Name = '{equipment.Name}' AND Category = '{equipment.Category}'";
+            List<Equipment> equipments = HandleData(ExecuteQuery(sql));
+            if (equipments.Count > 0)
+            {
+                ExecuteNonQuery($"UPDATE Equipments SET Units = Units + {equipment.Units} WHERE Name = '{equipment.Name}' AND Category = '{equipment.Category}'");
+            }
+            else
+            {
+                ExecuteNonQuery($"INSERT INTO Equipments VALUES ('{equipment.Name}', '{equipment.Category}', {equipment.Units})");
+            }
         }
     }
 }

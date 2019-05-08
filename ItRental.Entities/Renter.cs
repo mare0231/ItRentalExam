@@ -21,5 +21,19 @@ namespace ItRental.Entities
         {
             throw new NotImplementedException();
         }
+
+        public string TranslateRenterLevel()
+        {
+            switch (RenterLevel)
+            {
+                case RenterLevel.Starter:
+                    return "Begynder";
+                case RenterLevel.Normal:
+                    return "Normal";
+                case RenterLevel.TopRenter:
+                    return "Toplåner";
+            }
+            return "";
+        }
     }
 }

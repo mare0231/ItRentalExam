@@ -27,12 +27,18 @@
     <br />
     <br />
     <p>@Model.Message</p>
-    <h2>Opret nyt IT-udstyr</h2>
+    <h2>Opret ny låner</h2>
     <div class="form">
-        <form asp-page="Equipments">
+        <form asp-page="Renters">
             <label asp-for="Renter.Name"></label>
             <input asp-for="Renter.Name" />
             <select asp-for="Renter.RenterLevel">
+                @{ 
+                    foreach (Renter renter in Model.RenterLevels)
+                    {
+                        <option value="@renter.RenterLevel">@renter.TranslateRenterLevel()</option>
+                    }
+                }
             </select>
             <button type="submit">Opret</button>
         </form>

@@ -42,5 +42,10 @@ namespace ItRental.Dal
             }
             return equipments;
         }
+
+        public void InsertEquipment(Equipment equipment)
+        {
+            ExecuteNonQuery($"INSERT INTO Equipments VALUES ('{equipment.Name}', '{equipment.Category}', '{equipment.Units}')");
+        }
     }
 }

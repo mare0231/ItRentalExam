@@ -25,5 +25,11 @@ namespace ItRental.Web.Pages
         {
             
         }
+        public void OnPost()
+        {
+            EquipmentRepository equipmentRepository = new EquipmentRepository();
+            equipmentRepository.InsertEquipment(Equipment);
+            Equipments = equipmentRepository.GetEquipments();
+        }
     }
 }

@@ -6,7 +6,7 @@ using System.Text;
 
 namespace ItRental.Dal
 {
-    class RenterRepository : BaseRepository
+    public class RenterRepository : BaseRepository
     {
         public List<Renter> GetRenters()
         {

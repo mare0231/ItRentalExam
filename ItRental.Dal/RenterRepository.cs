@@ -13,24 +13,7 @@ namespace ItRental.Dal
             string sql = "SELECT * FROM Renters";
             return HandleData(ExecuteQuery(sql));
         }
-        private List<Renter> HandleData(DataTable dataTable)
-        {
-            List<Renter> renters = new List<Renter>();
-            if (dataTable is null)
-                return renters;
 
-            foreach (DataRow row in dataTable.Rows)
-            {
-                Renter renter = new Renter()
-                {
-                    Id = (int)row["RenterId"],
-                    Name = (string)row["Name"],
-                    RenterLevel = (RenterLevel)row["RenterLevel"]
-                };
-                renters.Add(renter);
-            }
-            return renters;
-        }
         public string InsertRenter(Renter renter)
         {
             bool isValid = IsValid(renter, out string message);
@@ -51,6 +34,31 @@ namespace ItRental.Dal
             }
             message = $"{renter.Name} er oprettet";
             return true;
+        }
+
+        public List<Renter> GetRentersByName(string name)
+        {
+            string sql = $"SELECT * from Renters WHERE Name = {name}";
+            return HandleData(ExecuteQuery(sql));
+        }
+
+        private List<Renter> HandleData(DataTable dataTable)
+        {
+            List<Renter> renters = new List<Renter>();
+            if (dataTable is null)
+                return renters;
+
+            foreach (DataRow row in dataTable.Rows)
+            {
+                Renter renter = new Renter()
+                {
+                    Id = (int)row["RenterId"],
+                    Name = (string)row["Name"],
+                    RenterLevel = (RenterLevel)row["RenterLevel"]
+                };
+                renters.Add(renter);
+            }
+            return renters;
         }
     }
 }

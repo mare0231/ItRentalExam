@@ -11,10 +11,12 @@ namespace ItRental.Entities
         public RenterLevel RenterLevel { get; set; }
         public List<Rental> Rentals { get; set; }
         public int NumberOfRentals { get; }
+
         public Rental NextRentalDue()
         {
             throw new NotImplementedException();
         }
+
         public bool GotOverdueRental()
         {
             throw new NotImplementedException();

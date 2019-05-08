@@ -37,6 +37,7 @@ namespace ItRental.Web.Pages
         public void OnPost()
         {
             RenterRepository renterRepository = new RenterRepository();
+            Message = renterRepository.InsertRenter(Renter);
             Renters = renterRepository.GetRenters();
         }
     }

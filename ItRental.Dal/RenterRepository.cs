@@ -31,5 +31,26 @@ namespace ItRental.Dal
             }
             return renters;
         }
+        public string InsertRenter(Renter renter)
+        {
+            bool isValid = IsValid(renter, out string message);
+            if (!isValid)
+            {
+                return message;
+            }
+            ExecuteNonQuery($"INSERT INTO Renters VALUES ('{renter.Name}', {(int) renter.RenterLevel})");
+            return message;
+        }
+
+        private bool IsValid(Renter renter, out string message)
+        {
+            if (string.IsNullOrWhiteSpace(renter.Name))
+            {
+                message = "Alle felter skal udfyldes";
+                return false;
+            }
+            message = $"{renter.Name} er oprettet";
+            return true;
+        }
     }
 }

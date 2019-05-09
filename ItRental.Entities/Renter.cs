@@ -14,18 +14,25 @@ namespace ItRental.Entities
 
         public Rental NextRentalDue()
         {
-            return Rentals[0];
+            if (Rentals.Count > 0)
+            {
+                return Rentals[0];
+            }
+            else
+            {
+                return null;
+            }
         }
 
         public bool GotOverdueRental()
         {
-            if (Rentals[0].ReturnTime < DateTime.Now)
+            if (Rentals[0].ReturnTime > DateTime.Now || Rentals.Count == 0)
             {
-                return true;
+                return false;
             }
             else
             {
-                return false;
+                return true;
             }
         }
 

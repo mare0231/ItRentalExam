@@ -8,6 +8,12 @@ namespace ItRental.Dal
 {
     public class RentalRepository : BaseRepository
     {
+        public List<Rental> GetRentals()
+        {
+            string sql = "SELECT * FROM Rentals";
+            return HandleData(ExecuteQuery(sql));
+        }
+
         private List<Rental> HandleData(DataTable dataTable)
         {
             List<Rental> rentals = new List<Rental>();

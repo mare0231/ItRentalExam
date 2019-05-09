@@ -36,6 +36,12 @@ namespace ItRental.Dal
             return true;
         }
 
+        public Renter GetRenter(int id)
+        {
+            string sql = $"SELECT * FROM Renters WHERE RenterId = '{id}'";
+            return HandleData(ExecuteQuery(sql))[0];
+        }
+
         public List<Renter> GetRentersByName(string name)
         {
             string sql = $"SELECT * FROM Renters WHERE Name LIKE '%{name}%'";

@@ -15,6 +15,7 @@ namespace ItRental.Web.Pages
         public Renter Renter { get; set; }
         public List<Renter> Renters { get; set; } = new List<Renter>();
         public List<Renter> RenterLevels { get; set; }
+        [BindProperty]
         public string SearchName { get; set; }
         public string Message { get; set; }
 

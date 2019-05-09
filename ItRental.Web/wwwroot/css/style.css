@@ -76,6 +76,18 @@ button:hover {
     width: 70vw;
 }
 
+.search {
+    display: flex;
+}
+
+.search input {
+    width: 30%;
+}
+
+.search button {
+    width: 10%;
+}
+
 /*Table design*/
 table {
     border-collapse: collapse;

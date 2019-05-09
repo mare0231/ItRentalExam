@@ -6,11 +6,11 @@
 }
 
 <h2>Oversigt over lånere</h2>
-<p>Søg efter låner</p>
-<form asp-page="Renters" asp-page-handler="Search">
-    <input asp-for="SearchName" />
-    <input type="submit" value="Søg" />
+<form asp-page="Renters" asp-page-handler="Search" class="search">
+    <input asp-for="SearchName" placeholder="Søg efter låner" />
+    <button type="submit">Søg</button>
 </form>
+<br />
 <div class="content">
     <table>
         <tr>

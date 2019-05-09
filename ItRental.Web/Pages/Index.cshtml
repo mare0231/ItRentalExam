@@ -7,13 +7,14 @@
 
 <h2>AspIT Nordjyllands IT-udlånsside</h2>
 <p>Velkommen til AspIT Nordjyllands side for udlån og aflevering af IT-udstyr. Her er det muligt at håndtere lånere, IT-udstyr samt registrering af udlån/aflevering af IT-udstyr.</p>
+<br />
 <h2>Åbningstider</h2>
-<table>
+<table class="openingHours">
     @{ 
         foreach (OpeningHours openingHours in Model.OpeningHours.OpeningHours)
         {
             <tr>
-                <td>@openingHours.Day</td>
+                <td>@openingHours.Day:</td>
                 <td>@openingHours.OpeningHour-@openingHours.ClosingHour</td>
             </tr>
         }

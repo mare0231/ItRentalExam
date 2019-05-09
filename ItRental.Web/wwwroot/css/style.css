@@ -119,3 +119,15 @@ th {
     background-color: darkgray;
     color: white;
 }
+
+.openingHours {
+    width: auto;
+}
+
+.openingHours tr {
+    background: none;
+}
+
+.openingHours td {
+    border: none;
+}

@@ -62,9 +62,9 @@ namespace ItRental.Dal
                 {
                     Id = (int)row["RenterId"],
                     Name = (string)row["Name"],
-                    RenterLevel = (RenterLevel)row["RenterLevel"],
-                    Rentals = rentalRepository.GetRentalsByRenterId((int)row["RenterId"])
+                    RenterLevel = (RenterLevel)row["RenterLevel"]
                 };
+                renter.Rentals = rentalRepository.GetRentalsByRenterId(renter.Id);
                 renters.Add(renter);
             }
             return renters;

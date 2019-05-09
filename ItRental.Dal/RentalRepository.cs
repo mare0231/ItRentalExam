@@ -36,9 +36,7 @@ namespace ItRental.Dal
                     Id = (int)row["RentalId"],
                     RentalTime = (DateTime)row["RentalTime"],
                     ReturnTime = (DateTime)row["ReturnTime"],
-                    Equipment = equipmentRepository.GetEquipment((int)row["EquipmentId"]),
-                    Units = (int)row["Units"],
-                    Renter = renterRepository.GetRenter((int)row["RenterId"])
+                    Units = (int)row["Units"]
                 };
                 rentals.Add(rental);
             }

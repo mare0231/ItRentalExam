@@ -16,7 +16,7 @@ namespace ItRental.Dal
 
         public List<Rental> GetRentalsByRenterId(int id)
         {
-            string sql = $"SELECT * FROM Rentals WHERE RenterId = {id} ORDER BY ReturnTime DESC";
+            string sql = $"SELECT * FROM Rentals WHERE RenterId = {id} ORDER BY ReturnTime ASC";
             return HandleData(ExecuteQuery(sql));
         }
 

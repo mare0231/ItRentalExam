@@ -15,24 +15,41 @@ namespace ItRental.Web.Pages
         public Renter Renter { get; set; }
         public List<Renter> Renters { get; set; } = new List<Renter>();
         public List<Renter> RenterLevels { get; set; }
+        public string Heading { get; set; }
         [BindProperty]
         public string SearchName { get; set; }
         public string Message { get; set; }
 
         public RentersModel()
         {
+            RenterRepository renterRepository = new RenterRepository();
+            Renters = renterRepository.GetRenters();
             List<RenterLevel> RenterLevelList = new List<RenterLevel>() { RenterLevel.Starter, RenterLevel.Normal, RenterLevel.TopRenter };
             RenterLevels = new List<Renter>();
             foreach (RenterLevel renterLevel in RenterLevelList)
             {
                 RenterLevels.Add(new Renter() { RenterLevel = renterLevel });
             }
+            Heading = "Oversigt over lånere";
         }
 
         public void OnGet()
         {
-            RenterRepository renterRepository = new RenterRepository();
-            Renters = renterRepository.GetRenters();
+            
+        }
+
+        public void OnGetOverdue()
+        {
+            Heading = "Oversigt over lånere med overskredne lån";
+            List<Renter> renters = new List<Renter>();
+            foreach (Renter renter in Renters)
+            {
+                if (renter.GotOverdueRental())
+                {
+                    renters.Add(renter);
+                }
+            }
+            Renters = renters;
         }
 
         public void OnPost()

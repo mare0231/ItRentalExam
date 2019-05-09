@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace ItRental.Entities
@@ -7,7 +8,9 @@ namespace ItRental.Entities
     public class Renter
     {
         public int Id { get; set; }
+        [Display(Name = "Navn")]
         public string Name { get; set; }
+        [Display(Name = "Rettighed")]
         public RenterLevel RenterLevel { get; set; }
         public List<Rental> Rentals { get; set; }
         public int NumberOfRentals { get { return Rentals.Count; } }
@@ -26,7 +29,7 @@ namespace ItRental.Entities
 
         public bool GotOverdueRental()
         {
-            if (Rentals.Count == 0 || Rentals[0].ReturnTime > DateTime.Now)
+            if (Rentals.Count == 0 || Rentals[0].ReturnTime >= DateTime.Now)
             {
                 return false;
             }

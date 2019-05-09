@@ -5,11 +5,13 @@
     Layout = "~/Pages/Shared/_Layout.cshtml";
 }
 
-<h2>Oversigt over lånere</h2>
+<h2>@Model.Heading</h2>
 <form asp-page="Renters" asp-page-handler="Search" class="search">
     <input asp-for="SearchName" placeholder="Søg efter låner" />
     <button type="submit">Søg</button>
 </form>
+<a asp-page="Renters">Vis alle lånere</a>
+<a asp-page="Renters" asp-page-handler="Overdue">Vis kun lånere med overskredne lån</a>
 <br />
 <div class="content">
     <table>
@@ -37,6 +39,7 @@
         <form asp-page="Renters">
             <label asp-for="Renter.Name"></label>
             <input asp-for="Renter.Name" />
+            <label asp-for="Renter.RenterLevel"></label>
             <select asp-for="Renter.RenterLevel">
                 @{ 
                     foreach (Renter renter in Model.RenterLevels)

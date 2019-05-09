@@ -1,11 +1,9 @@
 ﻿using ItRental.Entities.OpeningAPI;
 using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
 using System.Net;
-using System.Text;
 
-namespace ItRental.Dal.Services
+namespace ItRental.Services
 {
     public class OpeningService
     {

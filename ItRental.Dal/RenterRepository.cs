@@ -54,13 +54,16 @@ namespace ItRental.Dal
             if (dataTable is null)
                 return renters;
 
+            RentalRepository rentalRepository = new RentalRepository();
+
             foreach (DataRow row in dataTable.Rows)
             {
                 Renter renter = new Renter()
                 {
                     Id = (int)row["RenterId"],
                     Name = (string)row["Name"],
-                    RenterLevel = (RenterLevel)row["RenterLevel"]
+                    RenterLevel = (RenterLevel)row["RenterLevel"],
+                    Rentals = rentalRepository.GetRentalsByRenterId((int)row["RenterId"])
                 };
                 renters.Add(renter);
             }

@@ -26,7 +26,7 @@ namespace ItRental.Entities
 
         public bool GotOverdueRental()
         {
-            if (Rentals[0].ReturnTime > DateTime.Now || Rentals.Count == 0)
+            if (Rentals.Count == 0 || Rentals[0].ReturnTime > DateTime.Now)
             {
                 return false;
             }

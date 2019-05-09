@@ -22,5 +22,26 @@ namespace ItRental.Tests
             Rental actual = renter.NextRentalDue();
             Assert.Same(expected, actual);
         }
+        [Fact]
+        public void GotOverdueRental_ReturnsFalseWithNoRentals()
+        {
+            Renter renter = new Renter() { Rentals = new List<Rental>() };
+            bool actual = renter.GotOverdueRental();
+            Assert.False(actual);
+        }
+        [Fact]
+        public void GotOverdueRental_ReturnsFalseWithRentals()
+        {
+            Renter renter = new Renter() { Rentals = new List<Rental>() { new Rental() { ReturnTime = DateTime.Now.AddDays(1) } } };
+            bool actual = renter.GotOverdueRental();
+            Assert.False(actual);
+        }
+        [Fact]
+        public void GotOverdueRental_ReturnsTrueWithOverdueRentals()
+        {
+            Renter renter = new Renter() { Rentals = new List<Rental>() { new Rental() { ReturnTime = DateTime.Now.AddDays(-1) } } };
+            bool actual = renter.GotOverdueRental();
+            Assert.True(actual);
+        }
     }
 }

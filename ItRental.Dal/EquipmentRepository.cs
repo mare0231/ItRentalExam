@@ -17,6 +17,12 @@ namespace ItRental.Dal
             return HandleData(ExecuteQuery(sql));
         }
 
+        public Equipment GetEquipment(int id)
+        {
+            string sql = $"SELECT * FROM Equipment WHERE EquipmentId = '{id}'";
+            return HandleData(ExecuteQuery(sql))[0];
+        }
+
         /// <summary>
         /// Helper method used to convert DataTable to a list of Equipments.
         /// Returns an empty list if the parameter is null.

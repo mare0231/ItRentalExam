@@ -14,6 +14,12 @@ namespace ItRental.Dal
             return HandleData(ExecuteQuery(sql));
         }
 
+        public List<Rental> GetRentalsByRenterId(int id)
+        {
+            string sql = $"SELECT * FROM Rentals WHERE RenterId = '{id}'";
+            return HandleData(ExecuteQuery(sql));
+        }
+
         private List<Rental> HandleData(DataTable dataTable)
         {
             List<Rental> rentals = new List<Rental>();

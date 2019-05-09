@@ -10,7 +10,7 @@ namespace ItRental.Entities
         public string Name { get; set; }
         public RenterLevel RenterLevel { get; set; }
         public List<Rental> Rentals { get; set; }
-        public int NumberOfRentals { get; }
+        public int NumberOfRentals { get { return Rentals.Count; } }
 
         public Rental NextRentalDue()
         {

@@ -14,12 +14,19 @@ namespace ItRental.Entities
 
         public Rental NextRentalDue()
         {
-            throw new NotImplementedException();
+            return Rentals[0];
         }
 
         public bool GotOverdueRental()
         {
-            throw new NotImplementedException();
+            if (Rentals[0].ReturnTime < DateTime.Now)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public string TranslateRenterLevel()
@@ -32,8 +39,9 @@ namespace ItRental.Entities
                     return "Normal";
                 case RenterLevel.TopRenter:
                     return "Toplåner";
+                default:
+                    return "";
             }
-            return "";
         }
     }
 }

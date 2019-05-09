@@ -15,12 +15,17 @@ namespace ItRental.Entities
 
         public int CompareTo(Rental other)
         {
-            throw new NotImplementedException();
+            if (other is null) return 1;
+            return ReturnTime.CompareTo(other.ReturnTime);
         }
 
         public bool IsRentalOverdue()
         {
-            throw new NotImplementedException();
+            if (ReturnTime < DateTime.Now)
+            {
+                return true;
+            }
+            return false;
         }
     }
 }

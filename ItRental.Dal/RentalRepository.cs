@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ItRental.Dal
 {
-    public class RentalRepository
+    public class RentalRepository : BaseRepository
     {
     }
 }

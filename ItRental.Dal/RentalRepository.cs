@@ -26,6 +26,7 @@ namespace ItRental.Dal
             if (dataTable is null)
                 return rentals;
 
+            EquipmentRepository equipmentRepository = new EquipmentRepository();
             RenterRepository renterRepository = new RenterRepository();
 
             foreach (DataRow row in dataTable.Rows)
@@ -35,7 +36,7 @@ namespace ItRental.Dal
                     Id = (int)row["RentalId"],
                     RentalTime = (DateTime)row["RentalTime"],
                     ReturnTime = (DateTime)row["ReturnTime"],
-                    Equipment = (Equipment)row["Equipment"],
+                    Equipment = equipmentRepository.GetEquipment((int)row["EquipmentId"]),
                     Units = (int)row["Units"],
                     Renter = renterRepository.GetRenter((int)row["RenterId"])
                 };
